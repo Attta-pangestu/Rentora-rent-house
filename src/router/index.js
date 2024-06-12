@@ -7,6 +7,9 @@ import {
   Splashscreen,
   FavoritesScreen,
   CartScreen,
+  SettingScreen,
+  SearchScreen,
+  ProductScreen,
 } from "../screens";
 import { BottomTabs } from "../components";
 const Stack = createStackNavigator();
@@ -21,6 +24,7 @@ function MainApp() {
       <Tab.Screen name="HomeScreen" component={Homescreen} />
       <Tab.Screen name="FavoritesScreen" component={FavoritesScreen} />
       <Tab.Screen name="CartScreen" component={CartScreen} />
+      <Tab.Screen name="SettingScreen" component={SettingScreen} />
     </Tab.Navigator>
   );
 }
@@ -30,6 +34,8 @@ const Router = () => {
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Splashscreen" component={Splashscreen} />
       <Stack.Screen name="Homescreen" component={Homescreen} />
+      <Stack.Screen name="SearchScreen" component={SearchScreen} />
+      <Stack.Screen name="ProductScreen" component={ProductScreen} />
       <Stack.Screen name="MainApp" component={MainApp} />
     </Stack.Navigator>
   );

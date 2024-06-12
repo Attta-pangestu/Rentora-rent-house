@@ -1,13 +1,34 @@
-import { View, TouchableOpacity, StyleSheet, Image } from "react-native";
+import { View, TouchableOpacity, StyleSheet } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
+
+const icon = ({ label, focus }) => {
+  const color = focus ? "white" : "gray";
+  switch (label) {
+    case "HomeScreen":
+      return <FontAwesome name="home" size={24} color={color} />;
+    case "FavoritesScreen":
+      return <FontAwesome name="heart" size={24} color={color} />;
+    case "CartScreen":
+      return <FontAwesome name="shopping-cart" size={24} color={color} />;
+    case "SettingScreen":
+      return <FontAwesome name="cog" size={24} color={color} />;
+  }
+};
 
 function BottomTabs({ state, descriptors, navigation }) {
   return (
     <View style={styles.container}>
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key];
-
+        const label =
+          options.tabBarLabel !== undefined
+            ? options.tabBarLabel
+            : options.title !== undefined
+            ? options.title
+            : route.name;
         const isFocused = state.index === index;
+
+        const Icon = icon({ label, focus: isFocused });
 
         const onPress = () => {
           const event = navigation.emit({
@@ -28,9 +49,6 @@ function BottomTabs({ state, descriptors, navigation }) {
           });
         };
 
-        // Determine whether the current tab is the middle one
-        const isMiddleTab = index === Math.floor(state.routes.length / 2);
-
         return (
           <TouchableOpacity
             accessibilityRole="button"
@@ -39,19 +57,10 @@ function BottomTabs({ state, descriptors, navigation }) {
             testID={options.tabBarTestID}
             onPress={onPress}
             onLongPress={onLongPress}
-            style={styles.tab}
+            style={[styles.tab]}
             key={index}
           >
-            {isMiddleTab ? (
-              <View style={styles.logoContainer}>
-                <Image
-                  source={require("./path-to-your-logo.png")}
-                  style={styles.logo}
-                />
-              </View>
-            ) : (
-              <FontAwesome name="home" size={24} color="black" />
-            )}
+            <View style={styles.logoContainer}>{Icon}</View>
           </TouchableOpacity>
         );
       })}
@@ -68,14 +77,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "black",
+    padding: 14,
   },
   logoContainer: {
     justifyContent: "center",
     alignItems: "center",
-  },
-  logo: {
-    width: 50,
-    height: 50,
   },
 });
 
