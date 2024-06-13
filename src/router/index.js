@@ -10,6 +10,7 @@ import {
   SettingScreen,
   SearchScreen,
   ProductScreen,
+  DetailScreen,
 } from "../screens";
 import { BottomTabs } from "../components";
 const Stack = createStackNavigator();
@@ -36,6 +37,7 @@ const Router = () => {
       <Stack.Screen name="Homescreen" component={Homescreen} />
       <Stack.Screen name="SearchScreen" component={SearchScreen} />
       <Stack.Screen name="ProductScreen" component={ProductScreen} />
+      <Stack.Screen name="DetailScreen" component={DetailScreen} />
       <Stack.Screen name="MainApp" component={MainApp} />
     </Stack.Navigator>
   );

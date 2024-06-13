@@ -5,6 +5,7 @@ import CartScreen from "./CartScreen";
 import SettingScreen from "./SettingScreen/index";
 import ProductScreen from "./ProductScreen/index";
 import SearchScreen from "./SearchScreen/index";
+import DetailScreen from "./DetailScreen/index";
 
 export {
   Homescreen,
@@ -14,4 +15,5 @@ export {
   SettingScreen,
   ProductScreen,
   SearchScreen,
+  DetailScreen,
 };

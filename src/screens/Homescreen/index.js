@@ -9,7 +9,6 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { data } from "./../../router/data";
 import { MyCard } from "../../components";
 import Carousel from "react-native-snap-carousel";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 const Homescreen = ({ navigation }) => {
   return (
