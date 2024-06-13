@@ -6,6 +6,10 @@ import { FontAwesome } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { TextInput } from "react-native-gesture-handler";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { data } from "./../../router/data";
+import { MyCard } from "../../components";
+import Carousel from "react-native-snap-carousel";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const Homescreen = ({ navigation }) => {
   return (
@@ -57,7 +61,18 @@ const Homescreen = ({ navigation }) => {
         <TouchableOpacity
           activeOpacity={0.7}
           onPress={() => navigation.navigate("ProductScreen")}
-        ></TouchableOpacity>
+        >
+          <Carousel
+            data={data}
+            layout="stack"
+            layoutCardOffset={9}
+            renderItem={MyCard}
+            sliderWidth={300}
+            itemWidth={300}
+            inactiveSlideShift={0}
+            useScrollView={true}
+          />
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -118,5 +133,9 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingHorizontal: 10,
     paddingVertical: 10,
+  },
+  carouselContainer: {
+    marginTop: 20,
+    alignItems: "center",
   },
 });

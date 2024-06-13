@@ -4,7 +4,7 @@ export const data = [
   {
     name: "Wooden Modern House",
     body: "Bali, Indonesia",
-    Image: Home1,
+    image: Home1,
   },
   {
     name: "Black Modern House",
