@@ -1,15 +1,37 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import React from "react";
-import { StatusBar } from "expo-status-bar";
+import { Text, TouchableOpacity, View, TextInput, StyleSheet } from "react-native";
+import React, { useState, useRef } from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
-import { TextInput } from "react-native-gesture-handler";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { data } from "./../../router/data";
 import Carousel from "react-native-snap-carousel";
 import { MyCard } from "../../components";
+import { styles } from './style'
+
 const Homescreen = ({ navigation }) => {
+  const [userInput, setUserInput] = useState("");
+  const [carouselData, setCarouselData] = useState(data);
+  const carouselRef = useRef(null);
+
+  const filterData = () => {
+    if (userInput === '') {
+      setCarouselData(data);
+    } else {
+      const filteredData = data.filter(item =>
+        item.name.toLowerCase().includes(userInput.toLowerCase())
+      );
+      setCarouselData(filteredData);
+    }
+  };
+
+  const onSearch = () => {
+    filterData();
+    if (carouselData.length > 0 && carouselRef.current) {
+      carouselRef.current.snapToItem(0);
+    }
+  };
+
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <View style={styles.areaContainer}>
@@ -30,8 +52,7 @@ const Homescreen = ({ navigation }) => {
         </View>
       </View>
 
-      <TouchableOpacity
-        onPress={() => navigation.navigate("SearchScreen")}
+      <View
         style={styles.buttonSearch}
       >
         <View style={styles.areaButton}>
@@ -42,9 +63,13 @@ const Homescreen = ({ navigation }) => {
               color="black"
               style={{ marginRight: 20 }}
             />
-            <Text style={styles.fontButton}>Search House</Text>
-          </View>
-          <View>
+            <TextInput
+              placeholder="Search House"
+              value={userInput}
+              onChangeText={setUserInput}
+              onSubmitEditing={onSearch}
+              style={{ flex: 1 }}
+            />
             <MaterialCommunityIcons
               name="filter-menu"
               size={24}
@@ -53,11 +78,12 @@ const Homescreen = ({ navigation }) => {
             />
           </View>
         </View>
-      </TouchableOpacity>
+      </View>
 
       <View style={styles.carouselContainer}>
         <Carousel
-          data={data}
+          ref={carouselRef}
+          data={carouselData}
           layout="default"
           renderItem={({ item, index }) => <MyCard item={item} index={index} />}
           sliderWidth={300}
@@ -71,63 +97,3 @@ const Homescreen = ({ navigation }) => {
 };
 
 export default Homescreen;
-
-const styles = StyleSheet.create({
-  areaContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginTop: 50,
-    marginHorizontal: 10,
-  },
-  location: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  fontLoc: {
-    color: "#8C9896",
-  },
-  city: {
-    marginTop: 5,
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  fontCity: {
-    fontSize: 16,
-    fontWeight: "700",
-    marginLeft: 10,
-  },
-  buttonSearch: {
-    marginHorizontal: 20,
-    marginVertical: 20,
-  },
-  areaButton: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    backgroundColor: "white",
-    borderRadius: 10,
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    elevation: 5,
-    shadowColor: "black",
-  },
-  areaInButton: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  fontButton: {
-    color: "grey",
-    fontSize: 12,
-  },
-  filter: {
-    backgroundColor: "black",
-    borderRadius: 10,
-    paddingHorizontal: 10,
-    paddingVertical: 10,
-  },
-  carouselContainer: {
-    marginTop: 20,
-    alignItems: "center",
-  },
-});
