@@ -5,7 +5,7 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   imgContainer: {
     flex: 1,
-    marginVertical: 50,
+    marginTop: 50,
     marginHorizontal: 30,
     alignItems: "center",
   },
@@ -21,6 +21,11 @@ export const styles = StyleSheet.create({
   fontName: { color: '#FFFFFF', fontWeight: '900', fontSize: 28, width: 200, textShadowColor: 'rgba(0,0,0,0.75)', textShadowOffset: { width: -1, height: 1 }, textShadowRadius: 10 },
   fontCity: { color: '#FFFFFF', fontWeight: '900', fontSize: 18, width: 200, textShadowColor: 'rgba(0,0,0,0.75)', textShadowOffset: { width: -1, height: 1 }, textShadowRadius: 10 },
   btnDetail: { backgroundColor: 'rgba(52,52,52,0.4)', padding: 4, borderRadius: 10 },
-  fontDetail: { fontSize: 24, fontWeight: '500', color: '#FFFFFF' }
-  descContainer {}
+  fontDetail: { fontSize: 24, fontWeight: '500', color: '#FFFFFF' },
+  fontDesc: { fontSize: 24, fontWeight: '500', color: 'black', marginHorizontal: 30, marginTop: 15 },
+  descContainer: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 15, marginHorizontal: 30, },
+  descSubContainer: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', gap: 10 },
+  fontSpecTitle: { fontSize: 14, color: '#9B9B9B', fontWeight: '500' },
+  fontSpecValue: { fontSize: 18, color: 'black', fontWeight: '700' }
+
 });
