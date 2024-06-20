@@ -1,13 +1,21 @@
 import { Image, ImageBackground, StyleSheet, Text, View, ScrollView } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { Home1, HouseDetail1, HouseDetail2, HouseDetail3 } from "../../assets/images";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { MaterialIcons } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { styles } from "./style";
 import { MaterialCommunityIcons, FontAwesome } from '@expo/vector-icons';
-import MapView from "react-native-maps";
+import MapView, { Marker } from "react-native-maps";
+
 const ProductScreen = ({ navigation }) => {
+  const [region, setRegion] = useState({
+    latitude: -8.340539,
+    longitude: 115.091949,
+    latitudeDelta: 0.0922,
+    longitudeDelta: 0.0421,
+  });
+
   return (
     <SafeAreaView>
       <ScrollView>
@@ -86,13 +94,18 @@ const ProductScreen = ({ navigation }) => {
           <View style={{ marginVertical: 10, marginHorizontal: 30 }}>
             <MapView
               style={{ height: 400, width: '100%' }}
-              initialRegion={{
-                latitude: 37.78825,
-                longitude: -122.4324,
-                latitudeDelta: 0.0922,
-                longitudeDelta: 0.0421,
-              }}
-            />
+              region={region}
+              onRegionChangeComplete={region => setRegion(region)}
+            >
+              <Marker
+                coordinate={{
+                  latitude: region.latitude,
+                  longitude: region.longitude,
+                }}
+                title={"Bali"}
+                description={"Pulau Bali, Indonesia"}
+              />
+            </MapView>
           </View>
 
           <View style={styles.priceContainer}>
@@ -114,5 +127,3 @@ const ProductScreen = ({ navigation }) => {
 };
 
 export default ProductScreen;
-
-
