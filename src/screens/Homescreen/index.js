@@ -7,9 +7,8 @@ import { Ionicons } from "@expo/vector-icons";
 import { TextInput } from "react-native-gesture-handler";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { data } from "./../../router/data";
-import { MyCard } from "../../components";
 import Carousel from "react-native-snap-carousel";
-
+import { MyCard } from "../../components";
 const Homescreen = ({ navigation }) => {
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
@@ -57,21 +56,15 @@ const Homescreen = ({ navigation }) => {
       </TouchableOpacity>
 
       <View style={styles.carouselContainer}>
-        <TouchableOpacity
-          activeOpacity={0.7}
-          onPress={() => navigation.navigate("ProductScreen")}
-        >
-          <Carousel
-            data={data}
-            layout="stack"
-            layoutCardOffset={9}
-            renderItem={MyCard}
-            sliderWidth={300}
-            itemWidth={300}
-            inactiveSlideShift={0}
-            useScrollView={true}
-          />
-        </TouchableOpacity>
+        <Carousel
+          data={data}
+          layout="default"
+          renderItem={({ item, index }) => <MyCard item={item} index={index} />}
+          sliderWidth={300}
+          itemWidth={300}
+          activeSlideShift={0}
+          useScrollView={true}
+        />
       </View>
     </View>
   );

@@ -95,7 +95,6 @@ const ProductScreen = ({ navigation }) => {
             <MapView
               style={{ height: 400, width: '100%' }}
               region={region}
-              onRegionChangeComplete={region => setRegion(region)}
             >
               <Marker
                 coordinate={{

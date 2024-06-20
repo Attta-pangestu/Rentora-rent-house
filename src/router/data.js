@@ -9,11 +9,11 @@ export const data = [
   {
     name: "Black Modern House",
     body: "Jakarta, Indonesia",
-    Image: Home2,
+    image: Home2,
   },
   {
     name: "Bandung Modern House",
     body: "Bandung, Indonesia",
-    Image: Home3,
+    image: Home3,
   },
 ];
