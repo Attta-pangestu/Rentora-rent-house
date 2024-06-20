@@ -6,6 +6,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { styles } from "./style";
 import { MaterialCommunityIcons, FontAwesome } from '@expo/vector-icons';
+import MapView from "react-native-maps";
 const ProductScreen = ({ navigation }) => {
   return (
     <SafeAreaView>
@@ -75,6 +76,35 @@ const ProductScreen = ({ navigation }) => {
                 <Text style={styles.fontSpecTitle} >bathroom</Text>
                 <Text style={styles.fontSpecValue} >4 Rooms</Text>
               </View>
+            </View>
+          </View>
+          <View style={{ marginHorizontal: 30, marginTop: 15 }}>
+            <Text style={{ color: '#9B9B9B' }}>
+              lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </Text>
+          </View>
+          <View style={{ marginVertical: 10, marginHorizontal: 30 }}>
+            <MapView
+              style={{ height: 400, width: '100%' }}
+              initialRegion={{
+                latitude: 37.78825,
+                longitude: -122.4324,
+                latitudeDelta: 0.0922,
+                longitudeDelta: 0.0421,
+              }}
+            />
+          </View>
+
+          <View style={styles.priceContainer}>
+            <View>
+              <Text style={styles.fontPrice}>Price</Text>
+              <Text style={styles.fontMoney}>$870 <Text style={styles.fontMonth}>/ Month</Text> </Text>
+
+            </View>
+            <View>
+              <TouchableOpacity activeOpacity={0.7} style={styles.btnAction}>
+                <Text style={{ color: 'white', fontWeight: 'bold' }}>Rent Now  </Text>
+              </TouchableOpacity>
             </View>
           </View>
         </View>

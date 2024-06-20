@@ -26,6 +26,10 @@ export const styles = StyleSheet.create({
   descContainer: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 15, marginHorizontal: 30, },
   descSubContainer: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', gap: 10 },
   fontSpecTitle: { fontSize: 14, color: '#9B9B9B', fontWeight: '500' },
-  fontSpecValue: { fontSize: 18, color: 'black', fontWeight: '700' }
-
+  fontSpecValue: { fontSize: 18, color: 'black', fontWeight: '700' },
+  priceContainer: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20, marginHorizontal: 30, },
+  fontPrice: { color: '#9B9B9B' },
+  fontMoney: { fontSize: 28, fontWeight: '900', color: 'black' },
+  fontMonth: { fontSize: 12, fontWeight: '500', color: 'black' },
+  btnAction: { backgroundColor: 'black', paddingHorizontal: 25, paddingVertical: 10, borderRadius: 10 }
 });
